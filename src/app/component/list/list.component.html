@@ -1,0 +1,19 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<a routerLink="/add">新規登録</a>
+<table border="1">
+  <tr>
+    <td>No</td>
+    <td>タイトル</td>
+    <td>投稿者</td>
+    <td>コメント</td>
+    <td>削除</td>
+  </tr>
+  <tr *ngFor="let message of messages">
+    <td>{{message.id}}</td>
+    <td><a href="/messages/{{message.id}}">{{message.title}}</a></td>
+    <td>{{message.author}}</td>
+    <td>{{message.comment}}</td>
+    <td><a href="#" (click)="delete(message.id)">削除</a></td>
+  </tr>
+</table>
+<router-outlet></router-outlet>

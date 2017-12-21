@@ -1,0 +1,28 @@
+<a routerLink="/">一覧に戻る</a>
+<form #myForm="ngForm" (ngSubmit)="update()" novalidate>
+    <div>
+      <label for="title">タイトル：</label><br />
+      <input id="title" name="title"
+        [(ngModel)]="message.title" #title="ngModel" required />
+      <span *ngIf="title.errors?.required && title.dirty">タイトルは必須です。</span>    
+    </div>
+    <div>
+      <label for="author">投稿者：</label><br />
+      <input id="author" name="author"
+        [(ngModel)]="message.author" #author="ngModel" required />
+      <span *ngIf="author.errors?.required && author.dirty">投稿者は必須です。</span>    
+    </div>
+    <div>
+      <label for="comment">コメント：</label><br />
+      <input id="comment" name="comment"
+        [(ngModel)]="message.comment" #comment="ngModel" required />
+      <span *ngIf="comment.errors?.required && comment.dirty">コメントは必須です。</span>    
+    </div>
+    <div>
+      <input type="submit" value="送信" 
+        [disabled]="myForm.invalid" />
+        <input type="reset" value="リセット" 
+        [disabled]="myForm.pristine" />
+  
+    </div>
+  </form>

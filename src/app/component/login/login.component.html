@@ -1,0 +1,21 @@
+<form #myForm="ngForm" (ngSubmit)="login()" novalidate>
+  <div>
+    <label for="id">ID：</label><br />
+    <input id="id" name="id"
+      [(ngModel)]="user.id" #id="ngModel" required />
+    <span *ngIf="id.errors?.required && id.dirty">IDは必須です。</span>    
+  </div>
+  <div>
+    <label for="password">パスワード：</label><br />
+    <input id="password" name="password"
+      [(ngModel)]="user.password" #password="ngModel" required />
+    <span *ngIf="password.errors?.required && password.dirty">パスワードは必須です。</span>    
+  </div>
+  <div>
+    <input type="submit" value="送信" 
+      [disabled]="myForm.invalid" />
+      <input type="reset" value="リセット" 
+      [disabled]="myForm.pristine" />
+
+  </div>
+</form>
